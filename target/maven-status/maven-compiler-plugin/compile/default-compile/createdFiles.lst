@@ -1,0 +1,14 @@
+classes\Escalacao.class
+gerentes\GerenteLogin.class
+classes\Estadio.class
+gerentes\GerenteJogador.class
+classes\Partida.class
+file\FilePersistence.class
+classes\Jogador.class
+classes\Time.class
+file\Serializador.class
+gui\TelaIncial.class
+classes\Tecnico.class
+com\mycompany\sistematimefutebol\SistemaTimeFutebol.class
+login\Registro.class
+login\Login.class
