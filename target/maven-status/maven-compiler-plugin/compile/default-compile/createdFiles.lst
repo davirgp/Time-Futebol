@@ -4,6 +4,7 @@ classes\Estadio.class
 gerentes\GerenteJogador.class
 classes\Partida.class
 file\FilePersistence.class
+gui\RoundedPanel.class
 classes\Jogador.class
 classes\Time.class
 file\Serializador.class
