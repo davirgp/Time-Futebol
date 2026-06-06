@@ -1,10 +1,14 @@
 classes\Escalacao.class
+file\BancoDadosProvisorio.class
 gerentes\GerenteLogin.class
 classes\Estadio.class
+classes\PosicaoJogador.class
 gerentes\GerenteJogador.class
+classes\AtributosJogador.class
 classes\Partida.class
 file\FilePersistence.class
 gui\RoundedPanel.class
+classes\Jogador$1.class
 classes\Jogador.class
 classes\Time.class
 file\Serializador.class

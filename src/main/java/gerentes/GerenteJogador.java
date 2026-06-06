@@ -15,9 +15,9 @@ public class GerenteJogador {
         this.listaJogadores.add(jogador);
     }
     
-    public boolean removeJogador(int numeroCamisa){
+    public boolean removeJogador(int id){
         for(int i = 0; i < listaJogadores.size(); i++){
-            if(listaJogadores.get(i).getNumeroCamisa() == numeroCamisa){
+            if(listaJogadores.get(i).getId() == id){
                 listaJogadores.remove(i);
                 return true; // removeu o jogador
             }
@@ -25,12 +25,25 @@ public class GerenteJogador {
         return false; // nao achou o numero da camisa
     }
     
-    public boolean verificaJogador(int numeroCamisa){
+    public boolean verificaJogador(int id){
         for(Jogador j : listaJogadores){
-            if(j.getNumeroCamisa() == numeroCamisa){
+            if(j.getId()== id){
                 return true; // jogador existe
             }
         }
         return false; // jogador nao existe
+    }
+    
+    public List<Jogador> getListaJogadores(){
+        return listaJogadores;
+    }
+    
+    public Jogador buscarJogador(int id){
+        for(Jogador j : listaJogadores){
+            if(j.getId() == id){
+                return j;
+            }
+        }
+        return null;
     }
 }
