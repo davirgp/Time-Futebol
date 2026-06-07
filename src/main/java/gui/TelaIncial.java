@@ -23,6 +23,8 @@ public final class TelaIncial extends javax.swing.JFrame {
         definePadraoBotao(btnSair);
         definePadraoBotao(btnNotificacao);
         
+        defineCorRosa(btnDashboard);
+        
         Parent.add(Dashboard, "dashboard");
         Parent.add(Time, "time");
     }
