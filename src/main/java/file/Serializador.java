@@ -1,12 +1,15 @@
 package file;
 
 import classes.AtributosJogador;
+import classes.Estadio;
 import classes.Jogador;
 import classes.PosicaoJogador;
+import classes.Tecnico;
+import classes.Time;
 import gerentes.GerenteJogador;
-import java.util.ArrayList;
-import java.util.List;
-import login.Login;
+import gerentes.GerenteTecnico;
+import gerentes.GerenteEstadio;
+import gerentes.GerenteTime;
 
 public class Serializador {
     
@@ -89,6 +92,150 @@ public class Serializador {
                 );
 
                 gerente.addJogador(jogador);
+            }
+        }
+
+        return gerente;
+    }
+    
+    
+    public String toCSVTecnicos(GerenteTecnico gerente){
+
+        String csv =
+            "Id;Nome;EstiloTatico;FormacaoFavorita;Salario\n";
+
+        for(Tecnico t : gerente.getListaTecnicos()){
+
+            csv += t.getId() + ";"
+                + t.getNome() + ";"
+                + t.getEstiloTatico() + ";"
+                + t.getFormacaoFavorita() + ";"
+                + t.getSalario()
+                + "\n";
+        }
+
+        return csv;
+    }
+    
+    public GerenteTecnico fromCSVTecnicos(String data){
+
+        GerenteTecnico gerente = new GerenteTecnico();
+
+        String[] linhas = data.split("\n");
+
+        for(int i = 1; i < linhas.length; i++){
+
+            String[] p = linhas[i].trim().split(";");
+
+            if(p.length >= 5){
+
+                Tecnico tecnico = new Tecnico(
+                    Integer.parseInt(p[0]),
+                    p[1],
+                    p[2],
+                    p[3],
+                    Double.parseDouble(p[4])
+                );
+
+                gerente.addTecnico(tecnico);
+            }
+        }
+
+        return gerente;
+    }
+    
+    
+    public String toCSVEstadios(GerenteEstadio gerente){
+
+        String csv =
+            "Id;Nome;Capacidade;Cidade;QualidadeGramado\n";
+
+        for(Estadio e : gerente.getListaEstadios()){
+
+            csv += e.getId() + ";"
+                + e.getNome() + ";"
+                + e.getCapacidade() + ";"
+                + e.getCidade() + ";"
+                + e.getQualidadeGramado()
+                + "\n";
+        }
+
+        return csv;
+    }
+    
+    public GerenteEstadio fromCSVEstadios(String data){
+
+        GerenteEstadio gerente = new GerenteEstadio();
+
+        String[] linhas = data.split("\n");
+
+        for(int i = 1; i < linhas.length; i++){
+
+            String[] p = linhas[i].trim().split(";");
+
+            if(p.length >= 5){
+
+                Estadio estadio = new Estadio(
+                    Integer.parseInt(p[0]),
+                    p[1],
+                    Integer.parseInt(p[2]),
+                    p[3],
+                    Integer.parseInt(p[4])
+                );
+
+                gerente.addEstadio(estadio);
+            }
+        }
+
+        return gerente;
+    }
+    
+    
+    public String toCSVTimes(GerenteTime gerente){
+
+        String csv =
+            "Id;Nome;IdEstadio;IdTecnico\n";
+
+        for(Time t : gerente.getListaTime()){
+
+            csv += t.getId() + ";"
+                + t.getNome() + ";"
+                + t.getEstadio().getId() + ";"
+                + t.getTecnico().getId()
+                + "\n";
+        }
+
+        return csv;
+    }
+    
+    public GerenteTime fromCSVTimes(
+        String data,
+        GerenteEstadio gerenteEstadio,
+        GerenteTecnico gerenteTecnico){
+
+        GerenteTime gerente = new GerenteTime();
+
+        String[] linhas = data.split("\n");
+
+        for(int i = 1; i < linhas.length; i++){
+
+            String[] p = linhas[i].trim().split(";");
+
+            if(p.length >= 4){
+
+                int idEstadio = Integer.parseInt(p[2]);
+                int idTecnico = Integer.parseInt(p[3]);
+
+                Time time = new Time(
+                    Integer.parseInt(p[0]),
+                    p[1],
+                    gerenteEstadio.buscarEstadio(idEstadio),
+                    gerenteTecnico.buscarTecnico(idTecnico),
+                    null,
+                    null
+                );
+
+                gerente.addTime(time);
             }
         }
 

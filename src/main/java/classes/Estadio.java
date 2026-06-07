@@ -1,12 +1,14 @@
 package classes;
 
 public class Estadio {
+    private int id;
     private String nome;
     private int capacidade;
     private String cidade;
     private int qualidadeGramado;
 
-    public Estadio(String nome, int capacidade, String cidade, int qualidadeGramado) {
+    public Estadio(int id, String nome, int capacidade, String cidade, int qualidadeGramado) {
+        this.id = id;
         this.nome = nome;
         this.capacidade = capacidade;
         this.cidade = cidade;
@@ -14,12 +16,17 @@ public class Estadio {
     }
     
     public Estadio(){
+        this.id = 0;
         this.nome = "";
         this.capacidade = 0;
         this.cidade = "";
         this.qualidadeGramado = 0;
     }
-
+    
+    public int getId() {
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -34,6 +41,11 @@ public class Estadio {
 
     public int getQualidadeGramado() {
         return qualidadeGramado;
+    }
+
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {

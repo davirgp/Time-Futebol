@@ -1,23 +1,29 @@
 package classes;
 
 import gerentes.GerenteJogador;
+import java.util.List;
 
 public class Time {
+    private int id;
     private String nome;
     private Estadio estadio;
     private Tecnico tecnico;
     private Escalacao escalacao;
     
-    private gerentes.GerenteJogador listaJogadores;
+    private List<Jogador> listaJogadores;
 
-    public Time(String nome, Estadio estadio, Tecnico tecnico, Escalacao escalacao, GerenteJogador listaJogadores) {
+    public Time(int id, String nome, Estadio estadio, Tecnico tecnico, Escalacao escalacao, GerenteJogador listaJogadores) {
+        this.id = id;
         this.nome = nome;
         this.estadio = estadio;
         this.tecnico = tecnico;
         this.escalacao = escalacao;
-        this.listaJogadores = listaJogadores;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -34,10 +40,15 @@ public class Time {
         return escalacao;
     }
 
-    public GerenteJogador getListaJogadores() {
+    public List<Jogador> getListaJogadores() {
         return listaJogadores;
     }
 
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -54,7 +65,7 @@ public class Time {
         this.escalacao = escalacao;
     }
 
-    public void setListaJogadores(GerenteJogador listaJogadores) {
+    public void setListaJogadores(List<Jogador> listaJogadores) {
         this.listaJogadores = listaJogadores;
     }
     

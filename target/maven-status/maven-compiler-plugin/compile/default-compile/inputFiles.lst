@@ -10,8 +10,11 @@ C:\Users\Davi\Time-Futebol\src\main\java\com\mycompany\sistematimefutebol\Sistem
 C:\Users\Davi\Time-Futebol\src\main\java\file\BancoDadosProvisorio.java
 C:\Users\Davi\Time-Futebol\src\main\java\file\FilePersistence.java
 C:\Users\Davi\Time-Futebol\src\main\java\file\Serializador.java
+C:\Users\Davi\Time-Futebol\src\main\java\gerentes\GerenteEstadio.java
 C:\Users\Davi\Time-Futebol\src\main\java\gerentes\GerenteJogador.java
 C:\Users\Davi\Time-Futebol\src\main\java\gerentes\GerenteLogin.java
+C:\Users\Davi\Time-Futebol\src\main\java\gerentes\GerenteTecnico.java
+C:\Users\Davi\Time-Futebol\src\main\java\gerentes\GerenteTime.java
 C:\Users\Davi\Time-Futebol\src\main\java\gui\RoundedPanel.java
 C:\Users\Davi\Time-Futebol\src\main\java\gui\TelaIncial.java
 C:\Users\Davi\Time-Futebol\src\main\java\login\Login.java
