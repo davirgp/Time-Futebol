@@ -3,11 +3,11 @@ package classes;
 public class Partida {
     private Time esseTime;
     private Time timeAdversario;
-    private String estadio;
+    private Estadio estadio;
     private String data;
     private Escalacao escalacao;
 
-    public Partida(Time esseTime, Time timeAdversario, String estadio, String data, Escalacao escalacao) {
+    public Partida(Time esseTime, Time timeAdversario, Estadio estadio, String data, Escalacao escalacao) {
         this.esseTime = esseTime;
         this.timeAdversario = timeAdversario;
         this.estadio = estadio;
@@ -23,7 +23,7 @@ public class Partida {
         return timeAdversario;
     }
 
-    public String getEstadio() {
+    public Estadio getEstadio() {
         return estadio;
     }
 
@@ -43,7 +43,7 @@ public class Partida {
         this.timeAdversario = timeAdversario;
     }
 
-    public void setEstadio(String estadio) {
+    public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
     }
 

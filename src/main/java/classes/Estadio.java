@@ -5,14 +5,14 @@ public class Estadio {
     private String nome;
     private int capacidade;
     private String cidade;
-    private int qualidadeGramado;
+    private double valor;
 
-    public Estadio(int id, String nome, int capacidade, String cidade, int qualidadeGramado) {
+    public Estadio(int id, String nome, int capacidade, String cidade, double valor) {
         this.id = id;
         this.nome = nome;
         this.capacidade = capacidade;
         this.cidade = cidade;
-        this.qualidadeGramado = qualidadeGramado;
+        this.valor = valor;
     }
     
     public Estadio(){
@@ -20,7 +20,7 @@ public class Estadio {
         this.nome = "";
         this.capacidade = 0;
         this.cidade = "";
-        this.qualidadeGramado = 0;
+        this.valor = 0;
     }
     
     public int getId() {
@@ -39,8 +39,8 @@ public class Estadio {
         return cidade;
     }
 
-    public int getQualidadeGramado() {
-        return qualidadeGramado;
+    public double getValor() {
+        return valor;
     }
 
     
@@ -60,7 +60,7 @@ public class Estadio {
         this.cidade = cidade;
     }
 
-    public void setQualidadeGramado(int qualidadeGramado) {
-        this.qualidadeGramado = qualidadeGramado;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

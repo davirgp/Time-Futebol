@@ -3,11 +3,11 @@ C:\Users\Davi\Time-Futebol\src\main\java\classes\Escalacao.java
 C:\Users\Davi\Time-Futebol\src\main\java\classes\Estadio.java
 C:\Users\Davi\Time-Futebol\src\main\java\classes\Jogador.java
 C:\Users\Davi\Time-Futebol\src\main\java\classes\Partida.java
-C:\Users\Davi\Time-Futebol\src\main\java\classes\PosicaoJogador.java
 C:\Users\Davi\Time-Futebol\src\main\java\classes\Tecnico.java
 C:\Users\Davi\Time-Futebol\src\main\java\classes\Time.java
 C:\Users\Davi\Time-Futebol\src\main\java\com\mycompany\sistematimefutebol\SistemaTimeFutebol.java
-C:\Users\Davi\Time-Futebol\src\main\java\file\BancoDadosProvisorio.java
+C:\Users\Davi\Time-Futebol\src\main\java\enums\EstiloTatico.java
+C:\Users\Davi\Time-Futebol\src\main\java\enums\PosicaoJogador.java
 C:\Users\Davi\Time-Futebol\src\main\java\file\FilePersistence.java
 C:\Users\Davi\Time-Futebol\src\main\java\file\Serializador.java
 C:\Users\Davi\Time-Futebol\src\main\java\gerentes\GerenteEstadio.java

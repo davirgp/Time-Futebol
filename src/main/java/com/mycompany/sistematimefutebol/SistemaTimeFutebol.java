@@ -4,6 +4,9 @@ import classes.Jogador;
 import file.FilePersistence;
 import file.Serializador;
 import gerentes.GerenteJogador;
+import gerentes.GerenteTecnico;
+import gerentes.GerenteEstadio;
+import gerentes.GerenteTime;
 import gui.TelaIncial;
 
 public class SistemaTimeFutebol {
@@ -12,10 +15,10 @@ public class SistemaTimeFutebol {
         FilePersistence fp = new FilePersistence();
         Serializador serializador = new Serializador();
 
-        String dados = fp.loadFromFile("jogadores.csv");
+        String dadosJogadores = fp.loadFromFile("jogadores.csv");
 
-        GerenteJogador gerente =
-                serializador.fromCSVJogadores(dados);
+        GerenteJogador gerenteJogador =
+                serializador.fromCSVJogadores(dadosJogadores);
         
         int elite = 0;
         int prime = 0;
@@ -23,9 +26,9 @@ public class SistemaTimeFutebol {
         int medio = 0;
         int ruim = 0;
         
-        for(Jogador jogador : gerente.getListaJogadores()){
+        for(Jogador jogador : gerenteJogador.getListaJogadores()){
 
-            double valor = jogador.getValorTranferencia();
+            double valor = jogador.getValorTransferencia();
 
             if(valor >= 70000000){
                 elite++;
@@ -45,7 +48,20 @@ public class SistemaTimeFutebol {
         }
         
         System.out.println("Elite: " + elite + "\nPrime: " + prime + "\nBom: " + bom + "\nMedio: " + medio + "\nRuim: " + ruim);
-
+        
+        String dadosTecnicos = fp.loadFromFile("tecnicos.csv");
+        GerenteTecnico gerenteTecnico = serializador.fromCSVTecnicos(dadosTecnicos);
+        
+        String dadosEstadios = fp.loadFromFile("estadios.csv");
+        GerenteEstadio gerenteEstadio = serializador.fromCSVEstadios(dadosEstadios);
+        
+        String dadosTimes = fp.loadFromFile("times.csv");
+        GerenteTime gerenteTime = serializador.fromCSVTimes(dadosTimes, gerenteEstadio, gerenteTecnico);
+        
+        String dadosElencos = fp.loadFromFile("elencos.csv");
+        serializador.fromCSVElencos(dadosElencos, gerenteTime, gerenteJogador);
+        
+        
         TelaIncial telaInicial = new TelaIncial();
         
         telaInicial.setVisible(true);

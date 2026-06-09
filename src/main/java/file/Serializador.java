@@ -3,7 +3,7 @@ package file;
 import classes.AtributosJogador;
 import classes.Estadio;
 import classes.Jogador;
-import classes.PosicaoJogador;
+import enums.PosicaoJogador;
 import classes.Tecnico;
 import classes.Time;
 import gerentes.GerenteJogador;
@@ -28,7 +28,7 @@ public class Serializador {
             + j.getPosicao() + ";"
             + j.getOverall() + ";"
             + j.getSalario() + ";"
-            + j.getValorTranferencia() + ";"
+            + j.getValorTransferencia() + ";"
             + j.getStatusFisico() + ";"
             + j.getQtdGols() + ";"
             + j.getQtdAssistencias() + ";"
@@ -102,7 +102,7 @@ public class Serializador {
     public String toCSVTecnicos(GerenteTecnico gerente){
 
         String csv =
-            "Id;Nome;EstiloTatico;FormacaoFavorita;Salario\n";
+            "Id;Nome;EstiloTatico;FormacaoFavorita;Salario;Reputacao\n";
 
         for(Tecnico t : gerente.getListaTecnicos()){
 
@@ -110,7 +110,8 @@ public class Serializador {
                 + t.getNome() + ";"
                 + t.getEstiloTatico() + ";"
                 + t.getFormacaoFavorita() + ";"
-                + t.getSalario()
+                + t.getSalario() + ";"
+                + t.getReputacao()
                 + "\n";
         }
 
@@ -127,14 +128,15 @@ public class Serializador {
 
             String[] p = linhas[i].trim().split(";");
 
-            if(p.length >= 5){
+            if(p.length >= 6){
 
                 Tecnico tecnico = new Tecnico(
                     Integer.parseInt(p[0]),
                     p[1],
-                    p[2],
+                    enums.EstiloTatico.valueOf(p[2]),
                     p[3],
-                    Double.parseDouble(p[4])
+                    Double.parseDouble(p[4]),
+                    Integer.parseInt(p[5])
                 );
 
                 gerente.addTecnico(tecnico);
@@ -148,7 +150,7 @@ public class Serializador {
     public String toCSVEstadios(GerenteEstadio gerente){
 
         String csv =
-            "Id;Nome;Capacidade;Cidade;QualidadeGramado\n";
+            "Id;Nome;Capacidade;Cidade;Valor\n";
 
         for(Estadio e : gerente.getListaEstadios()){
 
@@ -156,7 +158,7 @@ public class Serializador {
                 + e.getNome() + ";"
                 + e.getCapacidade() + ";"
                 + e.getCidade() + ";"
-                + e.getQualidadeGramado()
+                + e.getValor()
                 + "\n";
         }
 
@@ -180,7 +182,7 @@ public class Serializador {
                     p[1],
                     Integer.parseInt(p[2]),
                     p[3],
-                    Integer.parseInt(p[4])
+                    Double.parseDouble(p[4])
                 );
 
                 gerente.addEstadio(estadio);
@@ -194,12 +196,14 @@ public class Serializador {
     public String toCSVTimes(GerenteTime gerente){
 
         String csv =
-            "Id;Nome;IdEstadio;IdTecnico\n";
+            "Id;Nome;Saldo;Torcedores;IdEstadio;IdTecnico\n";
 
         for(Time t : gerente.getListaTime()){
 
             csv += t.getId() + ";"
                 + t.getNome() + ";"
+                + t.getSaldo() + ";"
+                + t.getTorcedores() + ";"
                 + t.getEstadio().getId() + ";"
                 + t.getTecnico().getId()
                 + "\n";
@@ -213,32 +217,89 @@ public class Serializador {
         GerenteEstadio gerenteEstadio,
         GerenteTecnico gerenteTecnico){
 
-        GerenteTime gerente = new GerenteTime();
+            GerenteTime gerente = new GerenteTime();
 
-        String[] linhas = data.split("\n");
+            String[] linhas = data.split("\n");
 
-        for(int i = 1; i < linhas.length; i++){
+            for(int i = 1; i < linhas.length; i++){
 
-            String[] p = linhas[i].trim().split(";");
+                String[] p = linhas[i].trim().split(";");
 
-            if(p.length >= 4){
+                if(p.length >= 6){
 
-                int idEstadio = Integer.parseInt(p[2]);
-                int idTecnico = Integer.parseInt(p[3]);
+                    Time time = new Time(
+                        Integer.parseInt(p[0]),
+                        p[1],
+                        Double.parseDouble(p[2]),
+                        Integer.parseInt(p[3]),
+                        gerenteEstadio.buscarEstadio(
+                            Integer.parseInt(p[4])
+                        ),
+                        gerenteTecnico.buscarTecnico(
+                            Integer.parseInt(p[5])
+                        ),
+                        null,
+                        new GerenteJogador()
+                    );
 
-                Time time = new Time(
-                    Integer.parseInt(p[0]),
-                    p[1],
-                    gerenteEstadio.buscarEstadio(idEstadio),
-                    gerenteTecnico.buscarTecnico(idTecnico),
-                    null,
-                    null
-                );
+                    gerente.addTime(time);
+                }
+            }
 
-                gerente.addTime(time);
+            return gerente;
+        }
+    
+    
+    public String toCSVElencos(GerenteTime gerente){
+
+        String csv = "IdTime;IdJogador\n";
+
+        for(Time time : gerente.getListaTime()){
+
+            for(Jogador jogador :
+                time.getListaJogadores().getListaJogadores()){
+
+                csv += time.getId()
+                    + ";"
+                    + jogador.getId()
+                    + "\n";
             }
         }
 
-        return gerente;
+        return csv;
     }
+    
+    public void fromCSVElencos(
+        String data,
+        GerenteTime gerenteTime,
+        GerenteJogador gerenteJogador){
+
+            String[] linhas = data.split("\n");
+
+            for(int i = 1; i < linhas.length; i++){
+
+                String[] p = linhas[i].trim().split(";");
+
+                if(p.length >= 2){
+
+                    int idTime =
+                        Integer.parseInt(p[0]);
+
+                    int idJogador =
+                        Integer.parseInt(p[1]);
+
+                    Time time =
+                        gerenteTime.buscarTime(idTime);
+
+                    Jogador jogador =
+                        gerenteJogador.buscarJogador(idJogador);
+
+                    if(time != null && jogador != null){
+
+                        time.getListaJogadores()
+                            .addJogador(jogador);
+                    }
+                }
+            }
+        }
 }

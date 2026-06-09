@@ -14,7 +14,7 @@ public class FilePersistence {
             FileWriter arq = new FileWriter(filePath);
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.print(texto);
-            arq.close();
+            gravarArq.close();
             
         } catch (IOException ex) {
             System.getLogger(FilePersistence.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -31,6 +31,8 @@ public class FilePersistence {
             while(scanner.hasNext()){
                 conteudoLido += scanner.next();
             }
+            
+            scanner.close();
             
         } catch (FileNotFoundException ex) {
             System.getLogger(FilePersistence.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);

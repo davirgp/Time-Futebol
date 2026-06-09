@@ -1,5 +1,7 @@
 package classes;
 
+import enums.PosicaoJogador;
+
 public class Jogador {
     private int id;
     private String nome;
@@ -65,7 +67,7 @@ public class Jogador {
         return salario;
     }
     
-    public double getValorTranferencia(){
+    public double getValorTransferencia(){
         return valorTransferencia;
     }
 
@@ -111,7 +113,7 @@ public class Jogador {
         this.salario = salario;
     }
     
-    public void setValorTranferencia(double valorTranferencia){
+    public void setValorTransferencia(double valorTranferencia){
         this.valorTransferencia = valorTranferencia;
     }
 
