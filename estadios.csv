@@ -58,7 +58,7 @@ Id;Nome;Capacidade;Cidade;Valor
 57;Estadio Moises Lucarelli;17700;Campinas;9000000.0
 58;Arena Conda;20080;Chapeco;11000000.0
 59;Estadio Rei Pele;19100;Maceio;10000000.0
-60;Estadio do Cafe;30000;Londrina;7000000.0
+60;Estadio do Cafe;30000;Londrina;5500000.
 61;Estadio Novelli Junior;18500;Itu;6000000.0
 62;Estadio Jorge Ismael de Biasi;12300;Novo Horizonte;5000000.0
 63;Estadio Germano Kruger;10600;Ponta Grossa;4500000.0
@@ -68,5 +68,4 @@ Id;Nome;Capacidade;Cidade;Valor
 67;Estadio Evandro Almeida;13800;Belem;4500000.0
 68;Mangueirao;53000;Belem;40000000.0
 69;Estadio Raulino de Oliveira;18230;Volta Redonda;6000000.0
-70;Estadio do Cafe;30000;Londrina;5500000.0
-71;Estadio Athletic Arena;10000;Sao Joao del Rei;3000000.0
+70;Estadio Athletic Arena;10000;Sao Joao del Rei;3000000.0
