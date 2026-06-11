@@ -151,7 +151,7 @@ public class Jogador {
                         a.getDefesa() * 27 +
                         a.getReflexo() * 28 +         
                         a.getSaida() * 14
-                    )/100;
+                    )/96;
                 break;
                 
             case ZAG:
@@ -167,7 +167,7 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
                 
             case LD:
@@ -184,7 +184,7 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
                 
             case VOL:
@@ -200,7 +200,7 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
                 
             case MC:
@@ -216,7 +216,7 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
                 
             case MEI:
@@ -232,14 +232,14 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
                 
             case PD:
             case PE:
                 overall = (
-                        a.getVelocidade() * 22 + 
-                        a.getFinalizacao() * 20 +     
+                        a.getVelocidade() * 20 + 
+                        a.getFinalizacao() * 22 +     
                         a.getPasse() * 13 +           
                         a.getDrible() * 26 +
                         a.getForca() * 2 +
@@ -249,7 +249,7 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
                 
             case ATA:
@@ -265,8 +265,14 @@ public class Jogador {
                         a.getDefesa() * 1 +
                         a.getReflexo() * 1 +
                         a.getSaida() * 1
-                    )/100;
+                    )/94;
                 break;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Jogador{" + "id=" + id + ", nome=" + nome + ", idade=" + idade + ", posicao=" + posicao + ", overall=" + overall + ", salario=" + salario + ", valorTransferencia=" + valorTransferencia + ", statusFisico=" + statusFisico + ", qtdGols=" + qtdGols + ", qtdAssistencias=" + qtdAssistencias + ", atributosJogador=" + atributosJogador + '}';
+    }
+    
 }

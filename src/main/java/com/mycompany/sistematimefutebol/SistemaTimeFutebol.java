@@ -61,9 +61,23 @@ public class SistemaTimeFutebol {
         String dadosElencos = fp.loadFromFile("elencos.csv");
         serializador.fromCSVElencos(dadosElencos, gerenteTime, gerenteJogador);
         
+        int over = 0;
+        String jogador = "";
+        
+        for(int i = 1; i < gerenteJogador.getListaJogadores().size(); i++){
+            if(gerenteJogador.buscarJogador(i).getOverall() > over){
+                over = gerenteJogador.buscarJogador(i).getOverall();
+                jogador = gerenteJogador.buscarJogador(i).getNome();
+            }
+        }
+        System.out.println(over);
+        System.out.println(jogador);
+        
+        System.out.println(gerenteJogador.buscarJogador(4).toString());
         
         TelaIncial telaInicial = new TelaIncial();
         
         telaInicial.setVisible(true);
     }
+    
 }
