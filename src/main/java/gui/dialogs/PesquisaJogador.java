@@ -34,6 +34,12 @@ public class PesquisaJogador extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        PainelNomeAtleta = new javax.swing.JPanel();
+        lblNomeAtleta = new javax.swing.JLabel();
+        lblSetNomeAtleta = new javax.swing.JTextField();
+        lblPosicaoAtleta = new javax.swing.JLabel();
+        lblSetPosicaoAtleta = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -41,15 +47,76 @@ public class PesquisaJogador extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
+        PainelNomeAtleta.setBackground(new java.awt.Color(100, 100, 100));
+        PainelNomeAtleta.setOpaque(false);
+        PainelNomeAtleta.setRequestFocusEnabled(false);
+        PainelNomeAtleta.setVerifyInputWhenFocusTarget(false);
+
+        lblNomeAtleta.setBackground(new java.awt.Color(51, 51, 51));
+        lblNomeAtleta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNomeAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        lblNomeAtleta.setText("Nome do Atleta");
+
+        lblSetNomeAtleta.setBackground(new java.awt.Color(0, 0, 0));
+        lblSetNomeAtleta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSetNomeAtleta.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout PainelNomeAtletaLayout = new javax.swing.GroupLayout(PainelNomeAtleta);
+        PainelNomeAtleta.setLayout(PainelNomeAtletaLayout);
+        PainelNomeAtletaLayout.setHorizontalGroup(
+            PainelNomeAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNomeAtleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblSetNomeAtleta)
+        );
+        PainelNomeAtletaLayout.setVerticalGroup(
+            PainelNomeAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelNomeAtletaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNomeAtleta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSetNomeAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        lblPosicaoAtleta.setBackground(new java.awt.Color(51, 51, 51));
+        lblPosicaoAtleta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPosicaoAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        lblPosicaoAtleta.setText("Posição do Atleta");
+
+        lblSetPosicaoAtleta.setBackground(new java.awt.Color(0, 0, 0));
+        lblSetPosicaoAtleta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSetPosicaoAtleta.setForeground(new java.awt.Color(255, 255, 255));
+
+        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(204, 0, 204));
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PainelNomeAtleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPosicaoAtleta, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .addComponent(lblSetPosicaoAtleta)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PainelNomeAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPosicaoAtleta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSetPosicaoAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
@@ -72,7 +139,7 @@ public class PesquisaJogador extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(47, 47, 47)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -127,7 +194,13 @@ public class PesquisaJogador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PainelNomeAtleta;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblNomeAtleta;
+    private javax.swing.JLabel lblPosicaoAtleta;
+    private javax.swing.JTextField lblSetNomeAtleta;
+    private javax.swing.JTextField lblSetPosicaoAtleta;
     // End of variables declaration//GEN-END:variables
 }
