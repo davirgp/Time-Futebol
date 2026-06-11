@@ -4,6 +4,7 @@
  */
 package gui;
 
+import gui.dialogs.PesquisaJogador;
 import java.awt.Color;
 
 /**
@@ -18,15 +19,13 @@ public final class TelaIncial extends javax.swing.JFrame {
     public TelaIncial() {
         initComponents();
         
-        definePadraoBotao(btnDashboard);
-        definePadraoBotao(btnTime);
-        definePadraoBotao(btnSair);
-        definePadraoBotao(btnNotificacao);
+        definiTodosBotoesPadrao();
         
         defineCorRosa(btnDashboard);
         
         Parent.add(Dashboard, "dashboard");
         Parent.add(Time, "time");
+        Parent.add(Transferencia, "transferencia");
     }
 
     /**
@@ -43,6 +42,7 @@ public final class TelaIncial extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         btnTime = new javax.swing.JButton();
+        btnTransferencia = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         Dashboard = new javax.swing.JPanel();
         PanelProfile = new RoundedPanel();
@@ -67,6 +67,14 @@ public final class TelaIncial extends javax.swing.JFrame {
         lblSetTecnico = new javax.swing.JLabel();
         lblSetEstadio = new javax.swing.JLabel();
         lblSetAnoFundado = new javax.swing.JLabel();
+        Transferencia = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblValorTransferencia = new javax.swing.JLabel();
+        lblValorTransferencia1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        btnPesquisaJogador = new javax.swing.JButton();
+        btnCentralTransferencias = new javax.swing.JButton();
+        btnRedeOlheiros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,18 +102,26 @@ public final class TelaIncial extends javax.swing.JFrame {
         btnTime.setContentAreaFilled(false);
         btnTime.addActionListener(this::btnTimeActionPerformed);
 
+        btnTransferencia.setBackground(new java.awt.Color(51, 51, 51));
+        btnTransferencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnTransferencia.setForeground(new java.awt.Color(255, 255, 255));
+        btnTransferencia.setText("Transferência");
+        btnTransferencia.setContentAreaFilled(false);
+        btnTransferencia.addActionListener(this::btnTransferenciaActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnDashboard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(btnTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(btnTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTransferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,6 +134,8 @@ public final class TelaIncial extends javax.swing.JFrame {
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTime, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -367,13 +385,111 @@ public final class TelaIncial extends javax.swing.JFrame {
             TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TimeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(519, 519, 519))
         );
 
         Parent.add(Time, "card3");
+
+        Transferencia.setBackground(new java.awt.Color(25, 25, 25));
+
+        jPanel6.setBackground(new java.awt.Color(25, 25, 25));
+
+        lblValorTransferencia.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        lblValorTransferencia.setForeground(new java.awt.Color(200, 200, 200));
+        lblValorTransferencia.setText("€ 10.000.000");
+
+        lblValorTransferencia1.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        lblValorTransferencia1.setForeground(new java.awt.Color(200, 200, 200));
+        lblValorTransferencia1.setText("Valor para transferencia:");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblValorTransferencia1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblValorTransferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblValorTransferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblValorTransferencia1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(25, 25, 25));
+
+        btnPesquisaJogador.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesquisaJogador.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        btnPesquisaJogador.setForeground(new java.awt.Color(204, 0, 204));
+        btnPesquisaJogador.setText("Pesquisar Jogadores");
+        btnPesquisaJogador.addActionListener(this::btnPesquisaJogadorActionPerformed);
+
+        btnCentralTransferencias.setBackground(new java.awt.Color(51, 51, 51));
+        btnCentralTransferencias.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        btnCentralTransferencias.setForeground(new java.awt.Color(204, 0, 204));
+        btnCentralTransferencias.setText("Central de Transferências");
+        btnCentralTransferencias.addActionListener(this::btnCentralTransferenciasActionPerformed);
+
+        btnRedeOlheiros.setBackground(new java.awt.Color(51, 51, 51));
+        btnRedeOlheiros.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        btnRedeOlheiros.setForeground(new java.awt.Color(204, 0, 204));
+        btnRedeOlheiros.setText("Rede de Olheiros");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCentralTransferencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnPesquisaJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addComponent(btnRedeOlheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPesquisaJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRedeOlheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCentralTransferencias, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout TransferenciaLayout = new javax.swing.GroupLayout(Transferencia);
+        Transferencia.setLayout(TransferenciaLayout);
+        TransferenciaLayout.setHorizontalGroup(
+            TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TransferenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        TransferenciaLayout.setVerticalGroup(
+            TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TransferenciaLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Parent.add(Transferencia, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -420,9 +536,30 @@ public final class TelaIncial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNotificacaoActionPerformed
 
+    private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
+        defineCorRosa(btnTransferencia);
+        
+        java.awt.CardLayout cl =
+                (java.awt.CardLayout) Parent.getLayout();
+        cl.show(Parent, "transferencia");
+        
+        
+    }//GEN-LAST:event_btnTransferenciaActionPerformed
+
+    private void btnPesquisaJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaJogadorActionPerformed
+       PesquisaJogador telaPesquisaJogador = new PesquisaJogador(this, true);
+       
+       telaPesquisaJogador.setVisible(true);
+    }//GEN-LAST:event_btnPesquisaJogadorActionPerformed
+
+    private void btnCentralTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCentralTransferenciasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCentralTransferenciasActionPerformed
+
     public void defineCorRosa(javax.swing.JButton botao){
         btnDashboard.setBackground(new Color(51,51,51));
         btnTime.setBackground(new Color(51,51,51));
+        btnTransferencia.setBackground(new Color(51,51,51));
         
         
         botao.setContentAreaFilled(true);
@@ -434,6 +571,7 @@ public final class TelaIncial extends javax.swing.JFrame {
     public void definePadraoBotao(javax.swing.JButton botao){
         botao.setBorderPainted(false);
         botao.setFocusPainted(false);
+    
     }
     
     public void setTextoTime(){
@@ -441,6 +579,18 @@ public final class TelaIncial extends javax.swing.JFrame {
         
         
         lblSetAnoFundado.setText("dsad");
+    }
+    
+    public void definiTodosBotoesPadrao(){
+        definePadraoBotao(btnDashboard);
+        definePadraoBotao(btnTime);
+        definePadraoBotao(btnSair);
+        definePadraoBotao(btnNotificacao);
+        definePadraoBotao(btnTransferencia);
+        
+        definePadraoBotao(btnPesquisaJogador);
+        definePadraoBotao(btnRedeOlheiros);
+        definePadraoBotao(btnCentralTransferencias); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -452,10 +602,15 @@ public final class TelaIncial extends javax.swing.JFrame {
     private javax.swing.JPanel PanelProfile;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel Time;
+    private javax.swing.JPanel Transferencia;
+    private javax.swing.JButton btnCentralTransferencias;
     private javax.swing.JButton btnDashboard;
     private javax.swing.JButton btnNotificacao;
+    private javax.swing.JButton btnPesquisaJogador;
+    private javax.swing.JButton btnRedeOlheiros;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnTime;
+    private javax.swing.JButton btnTransferencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -463,6 +618,8 @@ public final class TelaIncial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNomePlayer;
@@ -473,5 +630,7 @@ public final class TelaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel lblSetNome;
     private javax.swing.JLabel lblSetPais;
     private javax.swing.JLabel lblSetTecnico;
+    private javax.swing.JLabel lblValorTransferencia;
+    private javax.swing.JLabel lblValorTransferencia1;
     // End of variables declaration//GEN-END:variables
 }
