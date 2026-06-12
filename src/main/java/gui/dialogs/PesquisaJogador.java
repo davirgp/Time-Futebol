@@ -4,7 +4,10 @@
  */
 package gui.dialogs;
 
+import enums.PosicaoJogador;
+import gerentes.GerenteJogador;
 import java.awt.Color;
+import javax.swing.UIManager;
 
 /**
  *
@@ -13,13 +16,56 @@ import java.awt.Color;
 public class PesquisaJogador extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PesquisaJogador.class.getName());
-
     /**
      * Creates new form PesquisaJogador
      */
-    public PesquisaJogador(java.awt.Frame parent, boolean modal) {
+    
+    private GerenteJogador gerenteJogador;
+    
+    public PesquisaJogador(java.awt.Frame parent, boolean modal, GerenteJogador gerenteJogador) {
         super(parent, modal);
+        
+        this.gerenteJogador = gerenteJogador;
+        
         initComponents();
+        
+        cbPosicao.setBackground(new Color(27,27,27));
+        cbPosicao.setForeground(Color.WHITE);
+        
+        cbPosicao.setRenderer(new javax.swing.DefaultListCellRenderer() {
+
+    @Override
+    public java.awt.Component getListCellRendererComponent(
+            javax.swing.JList<?> list,
+            Object value,
+            int index,
+            boolean isSelected,
+            boolean cellHasFocus) {
+
+        javax.swing.JLabel item =
+                (javax.swing.JLabel)
+                super.getListCellRendererComponent(
+                        list,
+                        value,
+                        index,
+                        isSelected,
+                        cellHasFocus);
+
+        item.setForeground(Color.WHITE);
+
+        if (isSelected) {
+            item.setBackground(new Color(204,0,204));
+        } else {
+            item.setBackground(new Color(27,27,27));
+        }
+
+        return item;
+    }
+    
+    
+});
+
+cbPosicao.setFocusable(false);
         
         getContentPane().setBackground(new Color(27,27,27));
     }
@@ -38,8 +84,8 @@ public class PesquisaJogador extends javax.swing.JDialog {
         lblNomeAtleta = new javax.swing.JLabel();
         lblSetNomeAtleta = new javax.swing.JTextField();
         lblPosicaoAtleta = new javax.swing.JLabel();
-        lblSetPosicaoAtleta = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        cbPosicao = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -60,6 +106,7 @@ public class PesquisaJogador extends javax.swing.JDialog {
         lblSetNomeAtleta.setBackground(new java.awt.Color(0, 0, 0));
         lblSetNomeAtleta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSetNomeAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        lblSetNomeAtleta.addActionListener(this::lblSetNomeAtletaActionPerformed);
 
         javax.swing.GroupLayout PainelNomeAtletaLayout = new javax.swing.GroupLayout(PainelNomeAtleta);
         PainelNomeAtleta.setLayout(PainelNomeAtletaLayout);
@@ -83,14 +130,18 @@ public class PesquisaJogador extends javax.swing.JDialog {
         lblPosicaoAtleta.setForeground(new java.awt.Color(255, 255, 255));
         lblPosicaoAtleta.setText("Posição do Atleta");
 
-        lblSetPosicaoAtleta.setBackground(new java.awt.Color(0, 0, 0));
-        lblSetPosicaoAtleta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblSetPosicaoAtleta.setForeground(new java.awt.Color(255, 255, 255));
-
         btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(204, 0, 204));
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+
+        cbPosicao.setBackground(new java.awt.Color(0, 0, 0));
+        cbPosicao.setForeground(new java.awt.Color(255, 255, 255));
+        cbPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Qualquer", "GOL", "ZAG", "LD", "LE", "VOL", "MC", "MEI", "PD", "PE", "ATA", " " }));
+        cbPosicao.setLightWeightPopupEnabled(false);
+        cbPosicao.setVerifyInputWhenFocusTarget(false);
+        cbPosicao.addActionListener(this::cbPosicaoActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -101,8 +152,8 @@ public class PesquisaJogador extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PainelNomeAtleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPosicaoAtleta, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                    .addComponent(lblSetPosicaoAtleta)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbPosicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -113,8 +164,8 @@ public class PesquisaJogador extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(lblPosicaoAtleta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSetPosicaoAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+                .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -156,51 +207,64 @@ public class PesquisaJogador extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        String nomeJogadorBusca = lblSetNomeAtleta.getText();
+        
+        String posicaoSelecionada = cbPosicao.getSelectedItem().toString();
+        
+        if(!nomeJogadorBusca.isBlank()){
+            if(!posicaoSelecionada.equals("Qualquer")){
+                PosicaoJogador posicaoJogadorBusca = PosicaoJogador.valueOf(posicaoSelecionada);
+                for(int i = 0; i < gerenteJogador.getListaJogadores().size(); i++){
+                    if(gerenteJogador.getListaJogadores().get(i).getNome().equals(nomeJogadorBusca) && gerenteJogador.getListaJogadores().get(i).getPosicao().equals(posicaoJogadorBusca)){
+                        System.out.println(gerenteJogador.getListaJogadores().get(i).toString());
+                    }
+                }
+            }
+            else{
+                for(int i = 0; i < gerenteJogador.getListaJogadores().size(); i++){
+                    if(gerenteJogador.getListaJogadores().get(i).getNome().equals(nomeJogadorBusca)){
+                        System.out.println(gerenteJogador.getListaJogadores().get(i).toString());
+                    }
+                }
+            }
+        }
+        else{
+            if(!posicaoSelecionada.equals("Qualquer")){
+                PosicaoJogador posicaoJogadorBusca = PosicaoJogador.valueOf(posicaoSelecionada);
+                for(int i = 0; i < gerenteJogador.getListaJogadores().size(); i++){
+                    if(gerenteJogador.getListaJogadores().get(i).getPosicao().equals(posicaoJogadorBusca)){
+                        System.out.println(gerenteJogador.getListaJogadores().get(i).toString());
+                    }
+                }
+            }
+            else{
+                System.out.println("Selecione ao menos um filtro!");
+            }
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void cbPosicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPosicaoActionPerformed
+        
+    }//GEN-LAST:event_cbPosicaoActionPerformed
+
+    private void lblSetNomeAtletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSetNomeAtletaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblSetNomeAtletaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                PesquisaJogador dialog = new PesquisaJogador(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelNomeAtleta;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JComboBox<String> cbPosicao;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblNomeAtleta;
     private javax.swing.JLabel lblPosicaoAtleta;
     private javax.swing.JTextField lblSetNomeAtleta;
-    private javax.swing.JTextField lblSetPosicaoAtleta;
     // End of variables declaration//GEN-END:variables
 }

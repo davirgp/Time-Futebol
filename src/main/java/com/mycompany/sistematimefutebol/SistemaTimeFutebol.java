@@ -73,9 +73,7 @@ public class SistemaTimeFutebol {
         System.out.println(over);
         System.out.println(jogador);
         
-        System.out.println(gerenteJogador.buscarJogador(4).toString());
-        
-        TelaIncial telaInicial = new TelaIncial();
+        TelaIncial telaInicial = new TelaIncial(gerenteJogador);
         
         telaInicial.setVisible(true);
     }

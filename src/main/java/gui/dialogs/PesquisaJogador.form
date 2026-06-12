@@ -64,8 +64,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="PainelNomeAtleta" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblPosicaoAtleta" alignment="0" pref="439" max="32767" attributes="0"/>
-                      <Component id="lblSetPosicaoAtleta" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnBuscar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cbPosicao" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -79,8 +79,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblPosicaoAtleta" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblSetPosicaoAtleta" min="-2" pref="39" max="-2" attributes="0"/>
-                  <EmptySpace pref="476" max="32767" attributes="0"/>
+                  <Component id="cbPosicao" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace pref="475" max="32767" attributes="0"/>
                   <Component id="btnBuscar" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -144,6 +144,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblSetNomeAtletaActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -161,19 +164,6 @@
             <Property name="text" type="java.lang.String" value="Posi&#xe7;&#xe3;o do Atleta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="lblSetPosicaoAtleta">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -187,6 +177,43 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbPosicao">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="12">
+                <StringItem index="0" value="Qualquer"/>
+                <StringItem index="1" value="GOL"/>
+                <StringItem index="2" value="ZAG"/>
+                <StringItem index="3" value="LD"/>
+                <StringItem index="4" value="LE"/>
+                <StringItem index="5" value="VOL"/>
+                <StringItem index="6" value="MC"/>
+                <StringItem index="7" value="MEI"/>
+                <StringItem index="8" value="PD"/>
+                <StringItem index="9" value="PE"/>
+                <StringItem index="10" value="ATA"/>
+                <StringItem index="11" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
+            <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbPosicaoActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

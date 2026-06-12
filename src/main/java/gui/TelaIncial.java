@@ -4,6 +4,7 @@
  */
 package gui;
 
+import gerentes.GerenteJogador;
 import gui.dialogs.PesquisaJogador;
 import java.awt.Color;
 
@@ -15,8 +16,11 @@ public final class TelaIncial extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaIncial.class.getName());
 
+    private GerenteJogador gerenteJogador;
     
-    public TelaIncial() {
+    public TelaIncial(GerenteJogador gerenteJogador) {
+        this.gerenteJogador = gerenteJogador;
+        
         initComponents();
         
         definiTodosBotoesPadrao();
@@ -547,7 +551,7 @@ public final class TelaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     private void btnPesquisaJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaJogadorActionPerformed
-       PesquisaJogador telaPesquisaJogador = new PesquisaJogador(this, true);
+       PesquisaJogador telaPesquisaJogador = new PesquisaJogador(this, true, gerenteJogador);
        
        telaPesquisaJogador.setVisible(true);
     }//GEN-LAST:event_btnPesquisaJogadorActionPerformed
