@@ -10,11 +10,14 @@ D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\enums\EstiloTatico.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\enums\PosicaoJogador.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\file\FilePersistence.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\file\Serializador.java
+D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteElenco.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteEstadio.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteJogador.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteLogin.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteTecnico.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteTime.java
+D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\componentes\BarraAtributo.java
+D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\dialogs\JogadorBusca.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\dialogs\PesquisaJogador.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\RoundedPanel.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\TelaIncial.java

@@ -7,6 +7,7 @@ import gerentes.GerenteJogador;
 import gerentes.GerenteTecnico;
 import gerentes.GerenteEstadio;
 import gerentes.GerenteTime;
+import gerentes.GerenteElenco;
 import gui.TelaIncial;
 
 public class SistemaTimeFutebol {
@@ -14,6 +15,8 @@ public class SistemaTimeFutebol {
     public static void main(String[] args) {
         FilePersistence fp = new FilePersistence();
         Serializador serializador = new Serializador();
+        
+        GerenteElenco gerenteElenco = new GerenteElenco();
 
         String dadosJogadores = fp.loadFromFile("jogadores.csv");
 
@@ -59,7 +62,7 @@ public class SistemaTimeFutebol {
         GerenteTime gerenteTime = serializador.fromCSVTimes(dadosTimes, gerenteEstadio, gerenteTecnico);
         
         String dadosElencos = fp.loadFromFile("elencos.csv");
-        serializador.fromCSVElencos(dadosElencos, gerenteTime, gerenteJogador);
+        gerenteElenco = serializador.fromCSVElencos(dadosElencos, gerenteTime, gerenteJogador);
         
         int over = 0;
         String jogador = "";
@@ -73,7 +76,7 @@ public class SistemaTimeFutebol {
         System.out.println(over);
         System.out.println(jogador);
         
-        TelaIncial telaInicial = new TelaIncial(gerenteJogador);
+        TelaIncial telaInicial = new TelaIncial(gerenteJogador, gerenteElenco);
         
         telaInicial.setVisible(true);
     }

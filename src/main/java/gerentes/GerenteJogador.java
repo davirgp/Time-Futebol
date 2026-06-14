@@ -46,4 +46,13 @@ public class GerenteJogador {
         }
         return null;
     }
+    
+    public Jogador buscarJogadorNome(String nome){
+        for(Jogador j : listaJogadores){
+            if(j.getNome().equals(nome)){
+                return j;
+            }
+        }
+        return null;
+    }
 }

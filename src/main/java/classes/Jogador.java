@@ -134,7 +134,7 @@ public class Jogador {
         calculaOverall();
     }
     
-    public void calculaOverall(){
+    public int calculaOverall(){
         AtributosJogador a = this.atributosJogador;
         
         switch(posicao){
@@ -268,6 +268,7 @@ public class Jogador {
                     )/94;
                 break;
         }
+        return overall;
     }
 
     @Override

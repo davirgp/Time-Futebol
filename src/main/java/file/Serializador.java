@@ -10,6 +10,7 @@ import gerentes.GerenteJogador;
 import gerentes.GerenteTecnico;
 import gerentes.GerenteEstadio;
 import gerentes.GerenteTime;
+import gerentes.GerenteElenco;
 
 public class Serializador {
     
@@ -269,37 +270,57 @@ public class Serializador {
         return csv;
     }
     
-    public void fromCSVElencos(
+    public GerenteElenco fromCSVElencos(
         String data,
         GerenteTime gerenteTime,
-        GerenteJogador gerenteJogador){
+        GerenteJogador gerenteJogador
+    ){
 
-            String[] linhas = data.split("\n");
+        GerenteElenco gerente =
+            new GerenteElenco();
 
-            for(int i = 1; i < linhas.length; i++){
+        // adiciona todos os times
+        for(Time time :
+            gerenteTime.getListaTime()){
 
-                String[] p = linhas[i].trim().split(";");
+            gerente.addTime(time);
+        }
 
-                if(p.length >= 2){
+        String[] linhas =
+            data.split("\n");
 
-                    int idTime =
-                        Integer.parseInt(p[0]);
+        for(int i = 1; i < linhas.length; i++){
 
-                    int idJogador =
-                        Integer.parseInt(p[1]);
+            String[] p =
+                linhas[i]
+                .trim()
+                .split(";");
 
-                    Time time =
-                        gerenteTime.buscarTime(idTime);
+            if(p.length >= 2){
 
-                    Jogador jogador =
-                        gerenteJogador.buscarJogador(idJogador);
+                int idTime =
+                    Integer.parseInt(p[0]);
 
-                    if(time != null && jogador != null){
+                int idJogador =
+                    Integer.parseInt(p[1]);
 
-                        time.getListaJogadores()
-                            .addJogador(jogador);
-                    }
+                Jogador jogador =
+                    gerenteJogador
+                    .buscarJogador(
+                        idJogador
+                    );
+
+                if(jogador != null){
+
+                    gerente
+                        .contratarJogador(
+                            idTime,
+                            jogador
+                        );
                 }
             }
         }
+
+        return gerente;
+    }
 }

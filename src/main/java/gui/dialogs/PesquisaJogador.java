@@ -6,6 +6,7 @@ package gui.dialogs;
 
 import classes.Jogador;
 import enums.PosicaoJogador;
+import gerentes.GerenteElenco;
 import gerentes.GerenteJogador;
 import java.awt.Color;
 import javax.swing.JScrollBar;
@@ -25,12 +26,14 @@ public class PesquisaJogador extends javax.swing.JDialog {
      */
     
     private GerenteJogador gerenteJogador;
+    private GerenteElenco gerenteElenco;
     private DefaultTableModel modeloTabela = new DefaultTableModel();
     
-    public PesquisaJogador(java.awt.Frame parent, boolean modal, GerenteJogador gerenteJogador) {
+    public PesquisaJogador(java.awt.Frame parent, boolean modal, GerenteJogador gerenteJogador, GerenteElenco gerenteElenco) {
         super(parent, modal);
         
         this.gerenteJogador = gerenteJogador;
+        this.gerenteElenco = gerenteElenco;
         
         initComponents();
         
@@ -148,7 +151,7 @@ cbPosicao.setFocusable(false);
 
         cbPosicao.setBackground(new java.awt.Color(0, 0, 0));
         cbPosicao.setForeground(new java.awt.Color(255, 255, 255));
-        cbPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Qualquer", "GOL", "ZAG", "LD", "LE", "VOL", "MC", "MEI", "PD", "PE", "ATA", " " }));
+        cbPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Qualquer", "GOL", "ZAG", "LD", "LE", "VOL", "MC", "MEI", "PD", "PE", "ATA" }));
         cbPosicao.setLightWeightPopupEnabled(false);
         cbPosicao.setVerifyInputWhenFocusTarget(false);
         cbPosicao.addActionListener(this::cbPosicaoActionPerformed);
@@ -217,7 +220,11 @@ cbPosicao.setFocusable(false);
 
             }
         ));
-        tblJogadoresBusca.setEnabled(false);
+        tblJogadoresBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblJogadoresBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblJogadoresBusca);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -296,14 +303,14 @@ cbPosicao.setFocusable(false);
                 PosicaoJogador posicaoJogadorBusca = PosicaoJogador.valueOf(posicaoSelecionada);
                 for(int i = 0; i < gerenteJogador.getListaJogadores().size(); i++){
                     if(gerenteJogador.getListaJogadores().get(i).getNome().toLowerCase().contains(nomeJogadorBusca) && gerenteJogador.getListaJogadores().get(i).getPosicao().equals(posicaoJogadorBusca)){
-                        System.out.println(gerenteJogador.getListaJogadores().get(i).toString());
+                        modeloTabela.addRow(new Object[]{ gerenteJogador.getListaJogadores().get(i).getNome(), gerenteJogador.getListaJogadores().get(i).getPosicao(), gerenteJogador.getListaJogadores().get(i).getIdade(), gerenteJogador.getListaJogadores().get(i).getOverall(), gerenteJogador.getListaJogadores().get(i).getValorTransferencia()});
                     }
                 }
             }
             else{
                 for(int i = 0; i < gerenteJogador.getListaJogadores().size(); i++){
                     if(gerenteJogador.getListaJogadores().get(i).getNome().toLowerCase().contains(nomeJogadorBusca)){
-                        System.out.println();
+                        modeloTabela.addRow(new Object[]{ gerenteJogador.getListaJogadores().get(i).getNome(), gerenteJogador.getListaJogadores().get(i).getPosicao(), gerenteJogador.getListaJogadores().get(i).getIdade(), gerenteJogador.getListaJogadores().get(i).getOverall(), gerenteJogador.getListaJogadores().get(i).getValorTransferencia()});
                     }
                 }
             }
@@ -313,7 +320,6 @@ cbPosicao.setFocusable(false);
                 PosicaoJogador posicaoJogadorBusca = PosicaoJogador.valueOf(posicaoSelecionada);
                 for(int i = 0; i < gerenteJogador.getListaJogadores().size(); i++){
                     if(gerenteJogador.getListaJogadores().get(i).getPosicao().equals(posicaoJogadorBusca)){
-                        System.out.println(gerenteJogador.getListaJogadores().get(i).toString());
                         modeloTabela.addRow(new Object[]{ gerenteJogador.getListaJogadores().get(i).getNome(), gerenteJogador.getListaJogadores().get(i).getPosicao(), gerenteJogador.getListaJogadores().get(i).getIdade(), gerenteJogador.getListaJogadores().get(i).getOverall(), gerenteJogador.getListaJogadores().get(i).getValorTransferencia()});
                     }
                 }
@@ -331,6 +337,17 @@ cbPosicao.setFocusable(false);
     private void lblSetNomeAtletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSetNomeAtletaActionPerformed
         
     }//GEN-LAST:event_lblSetNomeAtletaActionPerformed
+
+    private void tblJogadoresBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJogadoresBuscaMouseClicked
+        if(evt.getClickCount() == 2){
+            int linha = tblJogadoresBusca.getSelectedRow();
+            String nome = tblJogadoresBusca.getValueAt(linha, 0).toString();
+            Jogador jogadorBusca = gerenteJogador.buscarJogadorNome(nome);
+            JogadorBusca telaBusca = new JogadorBusca(null, rootPaneCheckingEnabled, jogadorBusca, gerenteElenco);
+            telaBusca.setLocationRelativeTo(this);
+            telaBusca.setVisible(true);
+        }
+    }//GEN-LAST:event_tblJogadoresBuscaMouseClicked
 
     /**
      * @param args the command line arguments
