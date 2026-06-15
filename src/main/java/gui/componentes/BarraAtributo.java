@@ -38,7 +38,7 @@ public class BarraAtributo extends JPanel {
         int altura = getHeight();
 
         // fundo
-        g.setColor(new Color(60,60,60));
+        g.setColor(new Color(45,45,45));
         g.fillRect(0, 0, largura, altura);
 
         // largura preenchida

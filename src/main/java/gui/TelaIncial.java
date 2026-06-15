@@ -578,7 +578,6 @@ public final class TelaIncial extends javax.swing.JFrame {
     public void definePadraoBotao(javax.swing.JButton botao){
         botao.setBorderPainted(false);
         botao.setFocusPainted(false);
-    
     }
     
     public void setTextoTime(){

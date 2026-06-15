@@ -113,11 +113,12 @@ cbPosicao.setFocusable(false);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
-        PainelNomeAtleta.setBackground(new java.awt.Color(100, 100, 100));
+        PainelNomeAtleta.setBackground(new java.awt.Color(51, 51, 51));
         PainelNomeAtleta.setOpaque(false);
         PainelNomeAtleta.setRequestFocusEnabled(false);
         PainelNomeAtleta.setVerifyInputWhenFocusTarget(false);
 
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 204));
         jLabel1.setText("FILTRAR ATLETAS");
@@ -201,6 +202,7 @@ cbPosicao.setFocusable(false);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabel2.setBackground(new java.awt.Color(51, 51, 51));
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("RESULTADOS ENCONTRADOS:");
@@ -292,7 +294,7 @@ cbPosicao.setFocusable(false);
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        String nomeJogadorBusca = lblSetNomeAtleta.getText();
+        String nomeJogadorBusca = lblSetNomeAtleta.getText().trim().toLowerCase();
         
         String posicaoSelecionada = cbPosicao.getSelectedItem().toString();
         

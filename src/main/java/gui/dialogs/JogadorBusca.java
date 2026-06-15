@@ -1,19 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package gui.dialogs;
 
 import classes.Jogador;
 import gerentes.GerenteElenco;
-import gui.RoundedPanel;
 import gui.componentes.BarraAtributo;
 
-/**
- *
- * @author Davi
- */
-public class JogadorBusca extends javax.swing.JDialog {
+public final class JogadorBusca extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JogadorBusca.class.getName());
     
@@ -28,7 +19,7 @@ public class JogadorBusca extends javax.swing.JDialog {
     private BarraAtributo barraRef;
     private BarraAtributo barraSai;
     
-    private GerenteElenco gerenteElenco;
+    private final GerenteElenco gerenteElenco;
     
     public JogadorBusca(java.awt.Frame parent, boolean modal, Jogador jogador, GerenteElenco gerenteElenco) {
         super(parent, modal);
@@ -36,6 +27,11 @@ public class JogadorBusca extends javax.swing.JDialog {
         this.gerenteElenco = gerenteElenco;
         
         initComponents();
+        
+        btnAddTransferencia.setBorderPainted(false);
+        btnAddTransferencia.setFocusPainted(false);
+        
+        getContentPane().setBackground(new java.awt.Color(70,70,70));
         
         inicializarBarras();
         
@@ -50,8 +46,8 @@ public class JogadorBusca extends javax.swing.JDialog {
         lblGolAssist = new javax.swing.JLabel();
         lblNomeJogador = new javax.swing.JLabel();
         pnlOver = new javax.swing.JPanel();
-        lblOver = new javax.swing.JLabel();
         lblSetOver = new javax.swing.JLabel();
+        lblOver = new javax.swing.JLabel();
         lblAtributos = new javax.swing.JLabel();
         lblVel = new javax.swing.JLabel();
         barVel = new javax.swing.JPanel();
@@ -73,9 +69,11 @@ public class JogadorBusca extends javax.swing.JDialog {
         lblRef = new javax.swing.JLabel();
         barSai = new javax.swing.JPanel();
         lblSai = new javax.swing.JLabel();
+        btnAddTransferencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(50, 50, 50));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -91,36 +89,26 @@ public class JogadorBusca extends javax.swing.JDialog {
         lblNomeJogador.setForeground(new java.awt.Color(255, 255, 255));
         lblNomeJogador.setText("Vincius Junior");
 
-        pnlOver.setBackground(new java.awt.Color(45, 45, 45));
-
-        lblOver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblOver.setForeground(new java.awt.Color(204, 0, 204));
-        lblOver.setText("Overall:");
-
-        lblSetOver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblSetOver.setForeground(new java.awt.Color(250, 250, 250));
-        lblSetOver.setText("99");
+        pnlOver.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout pnlOverLayout = new javax.swing.GroupLayout(pnlOver);
         pnlOver.setLayout(pnlOverLayout);
         pnlOverLayout.setHorizontalGroup(
             pnlOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlOverLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(lblOver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSetOver)
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addGap(0, 118, Short.MAX_VALUE)
         );
         pnlOverLayout.setVerticalGroup(
             pnlOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlOverLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOver, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(lblSetOver))
-                .addContainerGap())
+            .addGap(0, 40, Short.MAX_VALUE)
         );
+
+        lblSetOver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSetOver.setForeground(new java.awt.Color(250, 250, 250));
+        lblSetOver.setText("99");
+
+        lblOver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblOver.setForeground(new java.awt.Color(204, 0, 204));
+        lblOver.setText("Overall:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,7 +121,12 @@ public class JogadorBusca extends javax.swing.JDialog {
                         .addComponent(lblNomeJogador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblInformacoes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblOver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSetOver)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblGolAssist, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,11 +141,15 @@ public class JogadorBusca extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblInformacoes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblGolAssist))
+                        .addGap(18, 22, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblOver)
+                            .addComponent(lblSetOver)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(pnlOver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 23, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblGolAssist)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -161,6 +158,7 @@ public class JogadorBusca extends javax.swing.JDialog {
         lblAtributos.setText("Atributos");
 
         lblVel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblVel.setForeground(new java.awt.Color(255, 255, 255));
         lblVel.setText("VEL");
 
         barVel.setBackground(new java.awt.Color(100, 100, 100));
@@ -177,6 +175,7 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblFin.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblFin.setForeground(new java.awt.Color(255, 255, 255));
         lblFin.setText("FIN");
 
         barFin.setBackground(new java.awt.Color(100, 100, 100));
@@ -193,6 +192,7 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblPas.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblPas.setForeground(new java.awt.Color(255, 255, 255));
         lblPas.setText("PAS");
 
         barPas.setBackground(new java.awt.Color(100, 100, 100));
@@ -222,9 +222,11 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblDri.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblDri.setForeground(new java.awt.Color(255, 255, 255));
         lblDri.setText("DRI");
 
         lblFis.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblFis.setForeground(new java.awt.Color(255, 255, 255));
         lblFis.setText("FIS");
 
         barFis.setBackground(new java.awt.Color(100, 100, 100));
@@ -254,9 +256,11 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblMar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblMar.setForeground(new java.awt.Color(255, 255, 255));
         lblMar.setText("MAR");
 
         lblPos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblPos.setForeground(new java.awt.Color(255, 255, 255));
         lblPos.setText("POS");
 
         barPos.setBackground(new java.awt.Color(100, 100, 100));
@@ -273,6 +277,7 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblDef.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblDef.setForeground(new java.awt.Color(255, 255, 255));
         lblDef.setText("Def");
 
         barDef.setBackground(new java.awt.Color(100, 100, 100));
@@ -302,6 +307,7 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblRef.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblRef.setForeground(new java.awt.Color(255, 255, 255));
         lblRef.setText("Ref");
 
         barSai.setBackground(new java.awt.Color(100, 100, 100));
@@ -318,7 +324,13 @@ public class JogadorBusca extends javax.swing.JDialog {
         );
 
         lblSai.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSai.setForeground(new java.awt.Color(255, 255, 255));
         lblSai.setText("Sai");
+
+        btnAddTransferencia.setBackground(new java.awt.Color(51, 51, 51));
+        btnAddTransferencia.setForeground(new java.awt.Color(204, 0, 204));
+        btnAddTransferencia.setText("Adicionar a lista de transferencia");
+        btnAddTransferencia.addActionListener(this::btnAddTransferenciaActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -379,6 +391,10 @@ public class JogadorBusca extends javax.swing.JDialog {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(barPas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(btnAddTransferencia)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,11 +447,17 @@ public class JogadorBusca extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(barSai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(142, 142, 142))
+                .addGap(68, 68, 68)
+                .addComponent(btnAddTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransferenciaActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnAddTransferenciaActionPerformed
     
     public void inicializarBarras(){
         barraVel = new BarraAtributo();
@@ -459,18 +481,6 @@ public class JogadorBusca extends javax.swing.JDialog {
         barDef.setLayout(new java.awt.BorderLayout());
         barRef.setLayout(new java.awt.BorderLayout());
         barSai.setLayout(new java.awt.BorderLayout());
-
-        barVel.setLayout(new java.awt.BorderLayout());
-        barFin.setLayout(new java.awt.BorderLayout());
-        barPas.setLayout(new java.awt.BorderLayout());
-        barDri.setLayout(new java.awt.BorderLayout());
-        barFis.setLayout(new java.awt.BorderLayout());
-        barMar.setLayout(new java.awt.BorderLayout());
-        barPos.setLayout(new java.awt.BorderLayout());
-        barDef.setLayout(new java.awt.BorderLayout());
-        barRef.setLayout(new java.awt.BorderLayout());
-        barSai.setLayout(new java.awt.BorderLayout());
-        
 
         barVel.add(barraVel, java.awt.BorderLayout.CENTER);
         barFin.add(barraFin, java.awt.BorderLayout.CENTER);
@@ -528,8 +538,6 @@ public class JogadorBusca extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BarraVel4;
-    private javax.swing.JPanel BarraVel6;
     private javax.swing.JPanel barDef;
     private javax.swing.JPanel barDri;
     private javax.swing.JPanel barFin;
@@ -537,10 +545,10 @@ public class JogadorBusca extends javax.swing.JDialog {
     private javax.swing.JPanel barMar;
     private javax.swing.JPanel barPas;
     private javax.swing.JPanel barPos;
-    private javax.swing.JPanel barPos2;
     private javax.swing.JPanel barRef;
     private javax.swing.JPanel barSai;
     private javax.swing.JPanel barVel;
+    private javax.swing.JButton btnAddTransferencia;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAtributos;
     private javax.swing.JLabel lblDef;

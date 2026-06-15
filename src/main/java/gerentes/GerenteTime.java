@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenteTime {
-    private List<Time> listaTimes;
+    private final List<Time> listaTimes;
 
     public GerenteTime() {
         this.listaTimes = new ArrayList<>();
