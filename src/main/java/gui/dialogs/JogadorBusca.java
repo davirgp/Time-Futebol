@@ -10,7 +10,7 @@ public final class JogadorBusca extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JogadorBusca.class.getName());
     
     private final Jogador jogador;
-    private final CentralTransferencia centralTransferencia;
+    private CentralTransferencia centralTransferencia;
     
     private BarraAtributo barraVel;
     private BarraAtributo barraFin;
@@ -463,7 +463,7 @@ public final class JogadorBusca extends javax.swing.JDialog {
 
     private void btnAddTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransferenciaActionPerformed
         
-        if(centralTransferencia.adicionarJogador(jogador)){
+        if(centralTransferencia.adicionarJogador(jogador) == true){
             dispose();
         }
         else{

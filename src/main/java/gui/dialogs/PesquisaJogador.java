@@ -34,7 +34,7 @@ public class PesquisaJogador extends javax.swing.JDialog {
         
         this.gerenteJogador = contexto.getGerenteJogador();
         this.gerenteElenco = contexto.getGerenteElenco();
-        this.centralTransferencia = centralTransferencia;
+        centralTransferencia = new CentralTransferencia((java.awt.Frame)getParent(), true, gerenteElenco);
         
         initComponents();
         
@@ -346,7 +346,7 @@ cbPosicao.setFocusable(false);
             int linha = tblJogadoresBusca.getSelectedRow();
             String nome = tblJogadoresBusca.getValueAt(linha, 0).toString();
             Jogador jogadorBusca = gerenteJogador.buscarJogadorNome(nome);
-            JogadorBusca telaBusca = new JogadorBusca(null, rootPaneCheckingEnabled, jogadorBusca, gerenteElenco, centralTransferencia);
+            JogadorBusca telaBusca = new JogadorBusca((java.awt.Frame)getParent(), true, jogadorBusca, gerenteElenco, centralTransferencia);
             telaBusca.setLocationRelativeTo(this);
             telaBusca.setVisible(true);
         }
