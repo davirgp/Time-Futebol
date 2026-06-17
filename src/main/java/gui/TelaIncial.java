@@ -4,8 +4,8 @@
  */
 package gui;
 
-import gerentes.GerenteJogador;
-import gerentes.GerenteElenco;
+import app.ContextoSistema;
+import gui.dialogs.CentralTransferencia;
 import gui.dialogs.PesquisaJogador;
 import java.awt.Color;
 
@@ -16,13 +16,11 @@ import java.awt.Color;
 public final class TelaIncial extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaIncial.class.getName());
-
-    private GerenteJogador gerenteJogador;
-    private GerenteElenco gerenteElenco;
     
-    public TelaIncial(GerenteJogador gerenteJogador, GerenteElenco gerenteElenco) {
-        this.gerenteJogador = gerenteJogador;
-        this.gerenteElenco = gerenteElenco;
+    private final ContextoSistema contexto;
+    
+    public TelaIncial(ContextoSistema contexto) {
+        this.contexto = contexto;
         
         initComponents();
         
@@ -554,13 +552,15 @@ public final class TelaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     private void btnPesquisaJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaJogadorActionPerformed
-       PesquisaJogador telaPesquisaJogador = new PesquisaJogador(this, true, gerenteJogador, gerenteElenco);
+       PesquisaJogador telaPesquisaJogador = new PesquisaJogador(this, true, contexto);
        
        telaPesquisaJogador.setVisible(true);
     }//GEN-LAST:event_btnPesquisaJogadorActionPerformed
 
     private void btnCentralTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCentralTransferenciasActionPerformed
-        // TODO add your handling code here:
+        CentralTransferencia telaCentralTransferencia = new CentralTransferencia(this, true, contexto.getGerenteElenco());
+        
+        telaCentralTransferencia.setVisible(true);
     }//GEN-LAST:event_btnCentralTransferenciasActionPerformed
 
     public void defineCorRosa(javax.swing.JButton botao){

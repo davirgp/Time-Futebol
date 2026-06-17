@@ -9,10 +9,9 @@ import enums.PosicaoJogador;
 import gerentes.GerenteElenco;
 import gerentes.GerenteJogador;
 import java.awt.Color;
-import javax.swing.JScrollBar;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import app.ContextoSistema;
 
 /**
  *
@@ -21,19 +20,21 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class PesquisaJogador extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PesquisaJogador.class.getName());
-    /**
-     * Creates new form PesquisaJogador
-     */
-    
-    private GerenteJogador gerenteJogador;
-    private GerenteElenco gerenteElenco;
+
+    private final ContextoSistema contexto;
+    private final GerenteJogador gerenteJogador;
+    private final GerenteElenco gerenteElenco;
+    private CentralTransferencia centralTransferencia;
     private DefaultTableModel modeloTabela = new DefaultTableModel();
     
-    public PesquisaJogador(java.awt.Frame parent, boolean modal, GerenteJogador gerenteJogador, GerenteElenco gerenteElenco) {
+    public PesquisaJogador(java.awt.Frame parent, boolean modal, ContextoSistema contexto) {
         super(parent, modal);
         
-        this.gerenteJogador = gerenteJogador;
-        this.gerenteElenco = gerenteElenco;
+        this.contexto = contexto;
+        
+        this.gerenteJogador = contexto.getGerenteJogador();
+        this.gerenteElenco = contexto.getGerenteElenco();
+        this.centralTransferencia = centralTransferencia;
         
         initComponents();
         
@@ -345,7 +346,7 @@ cbPosicao.setFocusable(false);
             int linha = tblJogadoresBusca.getSelectedRow();
             String nome = tblJogadoresBusca.getValueAt(linha, 0).toString();
             Jogador jogadorBusca = gerenteJogador.buscarJogadorNome(nome);
-            JogadorBusca telaBusca = new JogadorBusca(null, rootPaneCheckingEnabled, jogadorBusca, gerenteElenco);
+            JogadorBusca telaBusca = new JogadorBusca(null, rootPaneCheckingEnabled, jogadorBusca, gerenteElenco, centralTransferencia);
             telaBusca.setLocationRelativeTo(this);
             telaBusca.setVisible(true);
         }

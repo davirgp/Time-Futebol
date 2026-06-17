@@ -9,6 +9,7 @@ import gerentes.GerenteEstadio;
 import gerentes.GerenteTime;
 import gerentes.GerenteElenco;
 import gui.TelaIncial;
+import app.ContextoSistema;
 
 public class SistemaTimeFutebol {
 
@@ -17,11 +18,13 @@ public class SistemaTimeFutebol {
         Serializador serializador = new Serializador();
         
         GerenteElenco gerenteElenco = new GerenteElenco();
+        
 
         String dadosJogadores = fp.loadFromFile("jogadores.csv");
 
         GerenteJogador gerenteJogador =
                 serializador.fromCSVJogadores(dadosJogadores);
+
         
         int elite = 0;
         int prime = 0;
@@ -76,7 +79,9 @@ public class SistemaTimeFutebol {
         System.out.println(over);
         System.out.println(jogador);
         
-        TelaIncial telaInicial = new TelaIncial(gerenteJogador, gerenteElenco);
+        ContextoSistema contexto = new ContextoSistema(gerenteJogador, gerenteTecnico, gerenteEstadio, gerenteTime, gerenteElenco);
+        
+        TelaIncial telaInicial = new TelaIncial(contexto);
         
         telaInicial.setVisible(true);
     }

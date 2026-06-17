@@ -1,3 +1,4 @@
+D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\app\ContextoSistema.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\classes\AtributosJogador.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\classes\Escalacao.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\classes\Estadio.java
@@ -17,6 +18,7 @@ D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteLogin.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteTecnico.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gerentes\GerenteTime.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\componentes\BarraAtributo.java
+D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\dialogs\CentralTransferencia.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\dialogs\JogadorBusca.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\dialogs\PesquisaJogador.java
 D:\Projetos NetBeans JAVA\Time-Futebol\src\main\java\gui\RoundedPanel.java

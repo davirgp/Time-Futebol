@@ -3,10 +3,14 @@ package gui.dialogs;
 import classes.Jogador;
 import gerentes.GerenteElenco;
 import gui.componentes.BarraAtributo;
+import javax.swing.JOptionPane;
 
 public final class JogadorBusca extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JogadorBusca.class.getName());
+    
+    private final Jogador jogador;
+    private final CentralTransferencia centralTransferencia;
     
     private BarraAtributo barraVel;
     private BarraAtributo barraFin;
@@ -21,10 +25,12 @@ public final class JogadorBusca extends javax.swing.JDialog {
     
     private final GerenteElenco gerenteElenco;
     
-    public JogadorBusca(java.awt.Frame parent, boolean modal, Jogador jogador, GerenteElenco gerenteElenco) {
+    public JogadorBusca(java.awt.Frame parent, boolean modal, Jogador jogador, GerenteElenco gerenteElenco, CentralTransferencia centralTransferencia) {
         super(parent, modal);
         
         this.gerenteElenco = gerenteElenco;
+        this.jogador = jogador;
+        this.centralTransferencia = centralTransferencia;
         
         initComponents();
         
@@ -456,7 +462,13 @@ public final class JogadorBusca extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransferenciaActionPerformed
-        this.dispose();
+        
+        if(centralTransferencia.adicionarJogador(jogador)){
+            dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Jogador já monitorado ou lista cheia.");
+        }
     }//GEN-LAST:event_btnAddTransferenciaActionPerformed
     
     public void inicializarBarras(){
@@ -492,9 +504,6 @@ public final class JogadorBusca extends javax.swing.JDialog {
         barDef.add(barraDef, java.awt.BorderLayout.CENTER);
         barRef.add(barraRef, java.awt.BorderLayout.CENTER);
         barSai.add(barraSai, java.awt.BorderLayout.CENTER);
-        barDef.add(barraDef, java.awt.BorderLayout.CENTER);
-        barRef.add(barraRef, java.awt.BorderLayout.CENTER);
-        barSai.add(barraSai, java.awt.BorderLayout.CENTER);
         
     }
     
@@ -518,6 +527,7 @@ public final class JogadorBusca extends javax.swing.JDialog {
         barraFis.setValor((jogador.getAtributosJogador().getForca() + jogador.getAtributosJogador().getResistencia()) / 2);
         barraMar.setValor(jogador.getAtributosJogador().getMarcacao());
         barraPos.setValor(jogador.getAtributosJogador().getPosicionamento());
+        
         if(jogador.getPosicao().equals(enums.PosicaoJogador.GOL)){
             barraDef.setValor(jogador.getAtributosJogador().getDefesa());
             barraRef.setValor(jogador.getAtributosJogador().getReflexo());
