@@ -5,6 +5,7 @@ import gerentes.GerenteEstadio;
 import gerentes.GerenteJogador;
 import gerentes.GerenteTecnico;
 import gerentes.GerenteTime;
+import gui.dialogs.CentralTransferencia;
 
 public class ContextoSistema {
 
@@ -13,6 +14,7 @@ public class ContextoSistema {
     private final GerenteEstadio gerenteEstadio;
     private final GerenteTime gerenteTime;
     private final GerenteElenco gerenteElenco;
+    private CentralTransferencia centralTransferencia;
 
     public ContextoSistema(
             GerenteJogador gerenteJogador,
@@ -46,5 +48,13 @@ public class ContextoSistema {
 
     public GerenteElenco getGerenteElenco() {
         return gerenteElenco;
+    }
+
+    public CentralTransferencia getCentralTransferencia() {
+        return centralTransferencia;
+    }
+
+    public void setCentralTransferencia(CentralTransferencia centralTransferencia) {
+        this.centralTransferencia = centralTransferencia;
     }
 }

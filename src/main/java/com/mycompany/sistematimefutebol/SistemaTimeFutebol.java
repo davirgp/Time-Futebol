@@ -10,6 +10,7 @@ import gerentes.GerenteTime;
 import gerentes.GerenteElenco;
 import gui.TelaIncial;
 import app.ContextoSistema;
+import gui.dialogs.CentralTransferencia;
 
 public class SistemaTimeFutebol {
 
@@ -80,6 +81,8 @@ public class SistemaTimeFutebol {
         System.out.println(jogador);
         
         ContextoSistema contexto = new ContextoSistema(gerenteJogador, gerenteTecnico, gerenteEstadio, gerenteTime, gerenteElenco);
+        CentralTransferencia central = new CentralTransferencia(null, false, gerenteElenco);
+        contexto.setCentralTransferencia(central);
         
         TelaIncial telaInicial = new TelaIncial(contexto);
         

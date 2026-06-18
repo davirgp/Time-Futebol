@@ -20,18 +20,19 @@ public class CentralTransferencia extends javax.swing.JDialog {
 
     public CentralTransferencia(java.awt.Frame parent, boolean modal, gerentes.GerenteElenco gerenteElenco) {
         super(parent, modal);
+        System.out.println("CRIADA CENTRAL: " + this);
+
         
         this.gerenteElenco = gerenteElenco;
         
         initComponents();
         
-        String nome = "Kyllian Mbappe (MEI)";
-        String time = "Santos";
-        String valor = "R$ 1800000";
+        pnlBotoesPrincipais.setBackground(new java.awt.Color(30, 30, 30));
+        getContentPane().setBackground(new java.awt.Color(30,30,30));
 
-        btnJogador1.setFont(new Font("Monospaced", Font.PLAIN, 18));
-
-        
+        botoesEscondidos();
+        designBotoes(btnListaAlvos);
+        designBotoesJogador();
     }
 
     /**
@@ -44,10 +45,10 @@ public class CentralTransferencia extends javax.swing.JDialog {
     private void initComponents() {
 
         pnlBotoesPrincipais = new javax.swing.JPanel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        btnListaAlvos = new javax.swing.JButton();
+        btnPropostasEnviadas = new javax.swing.JButton();
+        btnPropostasRecebidas = new javax.swing.JButton();
+        btnAgentesLivres = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         ListaAlvos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -60,48 +61,52 @@ public class CentralTransferencia extends javax.swing.JDialog {
         PropostasEnviadas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 0, 204));
+        setBackground(new java.awt.Color(30, 30, 30));
         setResizable(false);
 
-        pnlBotoesPrincipais.setBackground(new java.awt.Color(50, 50, 50));
+        pnlBotoesPrincipais.setBackground(new java.awt.Color(30, 30, 30));
+        pnlBotoesPrincipais.setForeground(new java.awt.Color(30, 30, 30));
 
-        jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jToggleButton2.setText("LISTA DE ALVOS");
-        jToggleButton2.addActionListener(this::jToggleButton2ActionPerformed);
+        btnListaAlvos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnListaAlvos.setForeground(new java.awt.Color(255, 255, 255));
+        btnListaAlvos.setText("LISTA DE ALVOS");
+        btnListaAlvos.addActionListener(this::btnListaAlvosActionPerformed);
 
-        jToggleButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jToggleButton3.setText("PROPOSTAS ENVIADAS");
-        jToggleButton3.addActionListener(this::jToggleButton3ActionPerformed);
+        btnPropostasEnviadas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPropostasEnviadas.setForeground(new java.awt.Color(255, 255, 255));
+        btnPropostasEnviadas.setText("PROPOSTAS ENVIADAS");
 
-        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jToggleButton1.setText("PROPOSTAS RECEBIDAS");
-        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
+        btnPropostasRecebidas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPropostasRecebidas.setForeground(new java.awt.Color(255, 255, 255));
+        btnPropostasRecebidas.setText("PROPOSTAS RECEBIDAS");
 
-        jToggleButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jToggleButton4.setText("AGENTES LIVRES");
+        btnAgentesLivres.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAgentesLivres.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgentesLivres.setText("AGENTES LIVRES");
+        btnAgentesLivres.addActionListener(this::btnAgentesLivresActionPerformed);
 
         javax.swing.GroupLayout pnlBotoesPrincipaisLayout = new javax.swing.GroupLayout(pnlBotoesPrincipais);
         pnlBotoesPrincipais.setLayout(pnlBotoesPrincipaisLayout);
         pnlBotoesPrincipaisLayout.setHorizontalGroup(
             pnlBotoesPrincipaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBotoesPrincipaisLayout.createSequentialGroup()
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnListaAlvos, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPropostasEnviadas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPropostasRecebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                .addComponent(btnAgentesLivres, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
         );
         pnlBotoesPrincipaisLayout.setVerticalGroup(
             pnlBotoesPrincipaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotoesPrincipaisLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(pnlBotoesPrincipaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToggleButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                    .addComponent(btnPropostasRecebidas, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(btnPropostasEnviadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListaAlvos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgentesLivres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         Parent.setBackground(new java.awt.Color(50, 50, 50));
@@ -109,32 +114,46 @@ public class CentralTransferencia extends javax.swing.JDialog {
         Parent.setLayout(new java.awt.CardLayout());
 
         ListaAlvos.setBackground(new java.awt.Color(30, 30, 30));
+        ListaAlvos.setMaximumSize(new java.awt.Dimension(30, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Atletas Monitorados");
 
+        btnJogador1.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnJogador1.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador1.setText("jButton1");
         btnJogador1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnJogador1.addActionListener(this::btnJogador1ActionPerformed);
 
+        btnJogador2.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnJogador2.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador2.setText("jButton1");
         btnJogador2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        btnJogador3.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnJogador3.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador3.setText("jButton1");
         btnJogador3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        btnJogador4.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnJogador4.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador4.setText("jButton1");
         btnJogador4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        btnJogador5.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnJogador5.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador5.setText("jButton1");
         btnJogador5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        btnJogador6.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnJogador6.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador6.setText("jButton1");
         btnJogador6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnJogador6.addActionListener(this::btnJogador6ActionPerformed);
@@ -162,7 +181,7 @@ public class CentralTransferencia extends javax.swing.JDialog {
             .addGroup(ListaAlvosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(btnJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,24 +231,34 @@ public class CentralTransferencia extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
-
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     private void btnJogador6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogador6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnJogador6ActionPerformed
 
+    private void btnJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogador1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnJogador1ActionPerformed
+
+    private void btnListaAlvosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAlvosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListaAlvosActionPerformed
+
+    private void btnAgentesLivresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentesLivresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgentesLivresActionPerformed
+
+    public void botoesEscondidos(){
+        btnJogador1.setVisible(false);
+        btnJogador2.setVisible(false);
+        btnJogador3.setVisible(false);
+        btnJogador4.setVisible(false);
+        btnJogador5.setVisible(false);
+        btnJogador6.setVisible(false);
+    }
 
     public boolean adicionarJogador(Jogador jogador){
+        
+        System.out.println(jogador.getNome());
 
         if(listaJogadores.size() >= 6){
             return false;
@@ -238,6 +267,7 @@ public class CentralTransferencia extends javax.swing.JDialog {
         if(listaJogadores.contains(jogador)){
             return false;
         }
+        System.out.println("ADICIONANDO EM: " + this);
 
         listaJogadores.add(jogador);
 
@@ -259,12 +289,19 @@ public class CentralTransferencia extends javax.swing.JDialog {
         for(int i = 0; i < botoes.length; i++){
             if(i < listaJogadores.size()){
                 Jogador jogador = listaJogadores.get(i);
+                String nomeTime = "";
+                if(gerenteElenco.jogadorTemTime(jogador.getId()) == true){
+                    nomeTime = gerenteElenco.buscarTimeDoJogador(jogador.getId()).getNome();
+                }
+                else{
+                    nomeTime = "Sem time";
+                }
                 
-                btnJogador1.setText(
-                    String.format("%-30s %-50s %10s",
+                botoes[i].setText(
+                    String.format("%-30s %-50s %5s",
                         jogador.getNome(),
-                        gerenteElenco.buscarTimeDoJogador(jogador.getId()),
-                        jogador.getValorTransferencia()
+                        nomeTime,
+                        String.format("€ %,.0f", jogador.getValorTransferencia())
                     )
                 );
                 
@@ -274,23 +311,70 @@ public class CentralTransferencia extends javax.swing.JDialog {
                 botoes[i].setVisible(false);
             }
         }
+        revalidate();
+        repaint();
+    }
+    
+    public void designBotoesJogador(){
+        btnJogador1.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        btnJogador2.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        btnJogador3.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        btnJogador4.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        btnJogador5.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        btnJogador6.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        
+        
+    }
+    
+    
+    public void definePadraoBotao(javax.swing.JButton botao){
+        botao.setBorderPainted(false);
+        botao.setFocusPainted(false);
+    }
+    
+    public void defineTodosBotoesPadrao(){
+        definePadraoBotao(btnListaAlvos);
+        definePadraoBotao(btnPropostasEnviadas);
+        definePadraoBotao(btnPropostasRecebidas);
+        definePadraoBotao(btnAgentesLivres);
+        
+        definePadraoBotao(btnJogador1);
+        definePadraoBotao(btnJogador2);
+        definePadraoBotao(btnJogador3);
+        definePadraoBotao(btnJogador4);
+        definePadraoBotao(btnJogador5);
+        definePadraoBotao(btnJogador6);
+    }
+    
+    public void designBotoes(javax.swing.JButton botao){
+        btnListaAlvos.setBackground(new Color(51,51,51));
+        btnPropostasEnviadas.setBackground(new Color(51,51,51));
+        btnPropostasRecebidas.setBackground(new Color(51,51,51));
+        btnAgentesLivres.setBackground(new Color(51,51,51));
+        
+        botao.setContentAreaFilled(true);
+        botao.setOpaque(true);
+        botao.setBackground(new Color(204,0,204));
+        
+        definePadraoBotao(botao);
+        defineTodosBotoesPadrao();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ListaAlvos;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel PropostasEnviadas;
+    private javax.swing.JButton btnAgentesLivres;
     private javax.swing.JButton btnJogador1;
     private javax.swing.JButton btnJogador2;
     private javax.swing.JButton btnJogador3;
     private javax.swing.JButton btnJogador4;
     private javax.swing.JButton btnJogador5;
     private javax.swing.JButton btnJogador6;
+    private javax.swing.JButton btnListaAlvos;
+    private javax.swing.JButton btnPropostasEnviadas;
+    private javax.swing.JButton btnPropostasRecebidas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JPanel pnlBotoesPrincipais;
     // End of variables declaration//GEN-END:variables
 }

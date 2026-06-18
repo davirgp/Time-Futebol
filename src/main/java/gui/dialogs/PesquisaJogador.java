@@ -31,12 +31,13 @@ public class PesquisaJogador extends javax.swing.JDialog {
         super(parent, modal);
         
         this.contexto = contexto;
-        
         this.gerenteJogador = contexto.getGerenteJogador();
         this.gerenteElenco = contexto.getGerenteElenco();
-        centralTransferencia = new CentralTransferencia((java.awt.Frame)getParent(), true, gerenteElenco);
+        this.centralTransferencia = contexto.getCentralTransferencia();
         
         initComponents();
+        
+        definePadraoBotao(btnBuscar);
         
         configurarCoresTabela();
         cabecalhoElementos();
@@ -471,6 +472,11 @@ cbPosicao.setFocusable(false);
                 }
             );
    }
+   
+   public void definePadraoBotao(javax.swing.JButton botao){
+        botao.setBorderPainted(false);
+        botao.setFocusPainted(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelNomeAtleta;

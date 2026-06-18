@@ -558,9 +558,7 @@ public final class TelaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisaJogadorActionPerformed
 
     private void btnCentralTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCentralTransferenciasActionPerformed
-        CentralTransferencia telaCentralTransferencia = new CentralTransferencia(this, true, contexto.getGerenteElenco());
-        
-        telaCentralTransferencia.setVisible(true);
+        contexto.getCentralTransferencia().setVisible(true);
     }//GEN-LAST:event_btnCentralTransferenciasActionPerformed
 
     public void defineCorRosa(javax.swing.JButton botao){
