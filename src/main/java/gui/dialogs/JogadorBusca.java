@@ -51,7 +51,7 @@ public final class JogadorBusca extends javax.swing.JDialog {
         lblInformacoes = new javax.swing.JLabel();
         lblGolAssist = new javax.swing.JLabel();
         lblNomeJogador = new javax.swing.JLabel();
-        pnlOver = new javax.swing.JPanel();
+        javax.swing.JPanel pnlOver = new javax.swing.JPanel();
         lblSetOver = new javax.swing.JLabel();
         lblOver = new javax.swing.JLabel();
         lblAtributos = new javax.swing.JLabel();
@@ -576,6 +576,5 @@ public final class JogadorBusca extends javax.swing.JDialog {
     private javax.swing.JLabel lblSai;
     private javax.swing.JLabel lblSetOver;
     private javax.swing.JLabel lblVel;
-    private javax.swing.JPanel pnlOver;
     // End of variables declaration//GEN-END:variables
 }

@@ -132,6 +132,7 @@ public class CentralTransferencia extends javax.swing.JDialog {
         btnJogador2.setForeground(new java.awt.Color(255, 255, 255));
         btnJogador2.setText("jButton1");
         btnJogador2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnJogador2.addActionListener(this::btnJogador2ActionPerformed);
 
         btnJogador3.setBackground(new java.awt.Color(51, 51, 51));
         btnJogador3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -236,7 +237,11 @@ public class CentralTransferencia extends javax.swing.JDialog {
     }//GEN-LAST:event_btnJogador6ActionPerformed
 
     private void btnJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogador1ActionPerformed
-        // TODO add your handling code here:
+        Jogador jogador = listaJogadores.get(0);
+        
+        InformacoesParaTransferencia telaInformacoesParaTransferencia = new InformacoesParaTransferencia((java.awt.Frame) getParent(), true, jogador, gerenteElenco, this);
+        
+        telaInformacoesParaTransferencia.setVisible(true);
     }//GEN-LAST:event_btnJogador1ActionPerformed
 
     private void btnListaAlvosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAlvosActionPerformed
@@ -246,6 +251,14 @@ public class CentralTransferencia extends javax.swing.JDialog {
     private void btnAgentesLivresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentesLivresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgentesLivresActionPerformed
+
+    private void btnJogador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogador2ActionPerformed
+        Jogador jogador = listaJogadores.get(0);
+        
+        InformacoesParaTransferencia telaInformacoesParaTransferencia = new InformacoesParaTransferencia((java.awt.Frame) getParent(), true, jogador, gerenteElenco, this);
+        
+        telaInformacoesParaTransferencia.setVisible(true);
+    }//GEN-LAST:event_btnJogador2ActionPerformed
 
     public void botoesEscondidos(){
         btnJogador1.setVisible(false);
